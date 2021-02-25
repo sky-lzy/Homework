@@ -17,7 +17,7 @@ public:
     void show();                                     //显示棋盘
     void SetChess(ChessType c, int row, int column); //黑白双方落子
     bool ValidPlace(int row, int column);            //判断落子是否合法
-    bool Win(ChessType c);                           //判断胜利条件
+    bool Win(ChessType c, int row, int column);      //判断胜利条件
 } chessBoard;
 
 void ChessBoard::show()
@@ -48,6 +48,10 @@ bool ChessBoard::ValidPlace(int row, int column)
             ;
     else
         return false;
+}
+
+bool ChessBoard::Win(ChessType c, int row, int column)
+{
 }
 
 class Player
