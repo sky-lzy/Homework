@@ -62,7 +62,7 @@ bool ChessBoard::Win(ChessType c, int row, int column)
         {
             if (column + 5 * j < 1 || column + 5 * j > 15)
                 break;
-            for (k = 1; k < 5; k++) //连续五子计数
+            for (k = 1; k <= 5; k++) //连续五子计数
                 if (board[row + k][column + k] != (int)c)
                     break;
             if (k = 5) //判断胜利条件
