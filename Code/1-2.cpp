@@ -52,6 +52,25 @@ bool ChessBoard::ValidPlace(int row, int column)
 
 bool ChessBoard::Win(ChessType c, int row, int column)
 {
+    int i, j, k;
+    bool flag = false;
+    for (i = -1; i <= 1 && !flag; i++)
+    {
+        if (row + 5 * i < 1 || row + 5 * i > 15)
+            break;
+        for (j = -1; j <= 1 && !flag; j++)
+        {
+            if (column + 5 * j < 1 || column + 5 * j > 15)
+                break;
+            int rr = row, cc = column;
+            for (k = 0; k < 5; k++)
+                if (board[rr][cc] != (int)c)
+                    break;
+            if (k = 5)
+                flag = true;
+        }
+    }
+    return flag;
 }
 
 class Player
