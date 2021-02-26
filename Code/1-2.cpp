@@ -54,19 +54,18 @@ bool ChessBoard::Win(ChessType c, int row, int column)
 {
     int i, j, k;
     bool flag = false;
-    for (i = -1; i <= 1 && !flag; i++)
+    for (i = -1; i <= 1 && !flag; i++) //遍历九个方向
     {
-        if (row + 5 * i < 1 || row + 5 * i > 15)
+        if (row + 5 * i < 1 || row + 5 * i > 15) //超范围舍去
             break;
         for (j = -1; j <= 1 && !flag; j++)
         {
             if (column + 5 * j < 1 || column + 5 * j > 15)
                 break;
-            int rr = row, cc = column;
-            for (k = 0; k < 5; k++)
-                if (board[rr][cc] != (int)c)
+            for (k = 1; k < 5; k++) //连续五子计数
+                if (board[row + k][column + k] != (int)c)
                     break;
-            if (k = 5)
+            if (k = 5) //判断胜利条件
                 flag = true;
         }
     }
