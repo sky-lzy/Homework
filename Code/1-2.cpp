@@ -112,8 +112,10 @@ int main()
     Player *pointer;
     while (!flag)
     {
-        if (set) y = Black, pointer = &A;
-        else y = White, pointer = &B;
+        if (set)
+            y = Black, pointer = &A;
+        else
+            y = White, pointer = &B;
         cout << y << "：" << endl;
         cin >> row >> column;
         if (!pointer->setChess(row, column))
@@ -122,11 +124,14 @@ int main()
             continue;
         }
         chessBoard.show();
-        if (chessBoard.Win(y, row, column)) flag = true;
+        if (chessBoard.Win(y, row, column))
+            flag = true;
         set = !set;
     }
-    if (set) cout << "白方";
-    else cout << "黑方";
+    if (set)
+        cout << "白方";
+    else
+        cout << "黑方";
     cout << "获胜！" << endl;
     return 0;
 }
