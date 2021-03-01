@@ -95,3 +95,38 @@ bool Player::setChess(int row, int column)
     else
         return false;
 }
+
+int main()
+{
+    cout << "开始游戏！" << endl;
+    chessBoard.show();
+    string name1, name2;
+    cout << "请输入黑方姓名：" << endl;
+    cin >> name1;
+    cout << "请输入白方姓名：" << endl;
+    cin >> name2;
+    Player A(name1, Black), B(name2, White);
+    bool flag = false, set = true;
+    ChessType y;
+    int row, column;
+    Player *pointer;
+    while (!flag)
+    {
+        if (set) y = Black, pointer = &A;
+        else y = White, pointer = &B;
+        cout << y << "：" << endl;
+        cin >> row >> column;
+        if (!pointer->setChess(row, column))
+        {
+            cout << "Error!" << endl;
+            continue;
+        }
+        chessBoard.show();
+        if (chessBoard.Win(y, row, column)) flag = true;
+        set = !set;
+    }
+    if (set) cout << "白方";
+    else cout << "黑方";
+    cout << "获胜！" << endl;
+    return 0;
+}
