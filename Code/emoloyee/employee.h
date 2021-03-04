@@ -4,33 +4,33 @@
 #include <iostream>
 using namespace std;
 
-static int num = 1;
+static int num = 1; //默认编号递增
 
-class Employee
+class Employee //定义Employee类
 {
 private:
-    int individualEmpNo;
-    int grade;
-    int accumPay;
+    int individualEmpNo; //员工编号
+    int grade;           //员工等级
+    int accumPay;        //员工工资
 public:
-    Employee();
-    Employee(int g, int a);
-    void setEmpNo(int i);
-    void setGrade(int g);
-    void setPay(int a);
-    void getInformation();
+    Employee();             //默认构造函数
+    Employee(int g, int a); //构造员工
+    void setEmpNo(int i);   //设定编号
+    void setGrade(int g);   //设定等级
+    void setPay(int a);     //设定工资
+    void getInformation();  //获取信息
 };
 
 Employee::Employee()
 {
-    individualEmpNo = ++num;
+    individualEmpNo = num++;
     grade = 1;
     accumPay = 5000;
 }
 
 Employee::Employee(int g, int a) : grade(g), accumPay(a)
 {
-    individualEmpNo = ++num;
+    individualEmpNo = num++;
 }
 
 void Employee::setEmpNo(int i)
