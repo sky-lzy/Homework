@@ -15,6 +15,7 @@ private:
 public:
     Employee();             //默认构造函数
     Employee(int g, int a); //构造员工
+    ~Employee();            //析构函数
     void setEmpNo(int i);   //设定编号
     void setGrade(int g);   //设定等级
     void setPay(int a);     //设定工资
@@ -31,6 +32,11 @@ Employee::Employee()
 Employee::Employee(int g, int a) : grade(g), accumPay(a)
 {
     individualEmpNo = num++;
+}
+
+Employee::~Employee()
+{
+    cout << "欢迎使用，再见！" << endl;
 }
 
 void Employee::setEmpNo(int i)
