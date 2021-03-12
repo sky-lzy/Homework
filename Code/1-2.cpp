@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 enum ChessType
@@ -11,14 +12,23 @@ enum ChessType
 class ChessBoard
 {
 private:
-    int board[16][16] = {0};
+    int board[16][16];
 
 public:
+    ChessBoard();                                    //构造函数
+    ~ChessBoard();                                   //析构函数
     void show();                                     //显示棋盘
     void SetChess(ChessType c, int row, int column); //黑白双方落子
     bool ValidPlace(int row, int column);            //判断落子是否合法
     bool Win(ChessType c, int row, int column);      //判断胜利条件
 } chessBoard;
+
+ChessBoard::ChessBoard() : board{0} {}
+
+ChessBoard::~ChessBoard()
+{
+    cout << "游戏结束，再见！" << endl;
+}
 
 void ChessBoard::show()
 {
@@ -80,10 +90,13 @@ private:
 
 public:
     Player(string s, ChessType c);      //构造函数
+    ~Player();                          //析构函数
     bool setChess(int row, int column); //玩家落子，并返回是否合法
 };
 
 Player::Player(string s, ChessType c) : name(s), chessType(c) {}
+
+Player::~Player() {}
 
 bool Player::setChess(int row, int column)
 {
