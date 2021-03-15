@@ -27,6 +27,7 @@ void Product::account(int n)
     if (n >= 10)
         s *= 0.98;
     sum += s;
+    number += n;
 }
 
 void Product::print()
@@ -38,4 +39,11 @@ void Product::print()
 int main()
 {
     Product p1(23.5, 0.9);
+    Product p2(24.5, 0.85);
+    Product p3(21.5, 0.95);
+    p1.account(5);
+    p2.account(12);
+    p3.account(100);
+    Product::print();
+    return 0;
 }
