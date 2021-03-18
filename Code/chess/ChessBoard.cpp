@@ -24,7 +24,7 @@ void ChessBoard::show()
                 cout << "+ ";
             else if (board[i][j] == 1)
                 cout << "● ";
-            else if (board[i][j] == -1)
+            else if (board[i][j] == 2)
                 cout << "○ ";
         }
         cout << endl;
@@ -36,7 +36,7 @@ void ChessBoard::SetChess(ChessType c, int row, int column)
     if (c == Black)
         board[row][column] = 1;
     else
-        board[row][column] = -1;
+        board[row][column] = 2;
     show();
 }
 
@@ -59,22 +59,40 @@ bool ChessBoard::ValidPlace(int row, int column)
 
 bool ChessBoard::Win(ChessType c, int row, int column)
 {
-    int i, j, k;
+    int s;
     bool flag = false;
-    for (i = -1; i <= 1 && !flag; i++) //遍历九个方向
+    if (FiveChesses(c, row, column, 1, 1))
+        flag = true;
+    if (FiveChesses(c, row, column, 1, 0) && !flag)
+        flag = true;
+    if (FiveChesses(c, row, column, 1, -1) && !flag)
+        flag = true;
+    if (FiveChesses(c, row, column, 0, 1) && !flag)
+        flag = true;
+    return flag;
+}
+
+bool ChessBoard::FiveChesses(ChessType c, int row, int column, int i, int j)
+{
+    int s = 1;
+    bool flag = false;
+    for (int k = 1; k < 5; k++)
     {
-        if (row + 4 * i < 1 || row + 4 * i > 15) //超范围舍去
+        if (row + i * k > 15 || row + i * k < 1 || column + j * k > 15 || column + j * k < 1)
             break;
-        for (j = -1; j <= 1 && !flag; j++)
-        {
-            if (column + 4 * j < 1 || column + 4 * j > 15)
-                break;
-            for (k = 1; k <= 4; k++) //连续五子计数
-                if (board[row + k * i][column + k * j] != (int)c)
-                    break;
-            if (k == 4) //判断胜利条件
-                flag = true;
-        }
+        if (board[row + i * k][column + j * k] != (int)c)
+            break;
+        s++;
     }
+    for (int k = 1; k < 5; k++)
+    {
+        if (row - i * k > 15 || row - i * k < 1 || column - j * k > 15 || column - j * k < 1)
+            break;
+        if (board[row - i * k][column - j * k] != (int)c)
+            break;
+        s++;
+    }
+    if (s >= 5)
+        flag = true;
     return flag;
 }

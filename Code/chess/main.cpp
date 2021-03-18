@@ -11,6 +11,7 @@ int main()
     cin >> n;
     Player P1(n, Black);
     cout << "请输入白方姓名：" << endl;
+    n = "";
     cin >> n;
     Player P2(n, White);
     ChessBoard chessBoard;

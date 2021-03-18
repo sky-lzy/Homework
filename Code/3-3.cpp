@@ -36,9 +36,53 @@ Date::~Date()
          << hex << setw(8) << setfill('0') << this << endl;
 }
 
+/* 
 Date func(Date A)
 {
     return Date(A);
+}
+
+int main()
+{
+    Date today;
+    today = func(today);
+    return 0;
+} 
+*/
+
+/* 
+Date func(Date A)
+{
+    Date B(A);
+    return B;
+}
+
+int main()
+{
+    Date today;
+    today = func(today);
+    return 0;
+}
+*/
+
+/* 
+Date & func(Date A)
+{
+    Date B(A);
+    return B;
+}
+
+int main()
+{
+    Date today;
+    today = func(today);
+    return 0;
+} 
+*/
+
+Date func(Date A)
+{
+    return A;
 }
 
 int main()
