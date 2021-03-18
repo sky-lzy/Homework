@@ -2,6 +2,8 @@
 #include "ChessBoard.h"
 using namespace std;
 
+int ChessBoard::step = 0;
+
 ChessBoard::ChessBoard() : board{0} //初始化棋盘
 {
     cout << "游戏开始，请黑方先落子" << endl;
@@ -38,6 +40,7 @@ void ChessBoard::SetChess(ChessType c, int row, int column)
     else
         board[row][column] = 2;
     show();
+    step++;
 }
 
 bool ChessBoard::ValidPlace(int row, int column)
@@ -69,6 +72,8 @@ bool ChessBoard::Win(ChessType c, int row, int column)
         flag = true;
     if (FiveChesses(c, row, column, 0, 1) && !flag)
         flag = true;
+    if (flag)
+        cout << "一共走了" << step << "步" << endl;
     return flag;
 }
 

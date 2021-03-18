@@ -7,6 +7,7 @@ class ChessBoard
 {
 private:
     int board[16][16];
+    static int step;
 
 public:
     ChessBoard();                                                     //构造函数
