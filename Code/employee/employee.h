@@ -7,6 +7,7 @@ private:
     int individualEmpNo; //员工编号
     int grade;           //员工等级
     int accumPay;        //员工工资
+    static int num;      //默认编号
 public:
     Employee();             //默认构造函数
     Employee(int g, int a); //构造员工

@@ -2,7 +2,7 @@
 #include "employee.h"
 using namespace std;
 
-static int num = 1; //默认编号递增
+int Employee::num = 1;
 
 Employee::Employee()
 {
@@ -18,7 +18,12 @@ Employee::Employee(int g, int a) : grade(g), accumPay(a)
 
 Employee::~Employee()
 {
-    cout << "欢迎使用，再见！" << endl;
+    static bool flag = true;
+    if (flag)
+    {
+        flag = false;
+        cout << "欢迎使用，再见！" << endl;
+    }
 }
 
 void Employee::setEmpNo(int i)
