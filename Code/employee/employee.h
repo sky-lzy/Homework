@@ -3,7 +3,7 @@
 
 class Employee //定义Employee类
 {
-private:
+protected:
     int individualEmpNo; //员工编号
     int grade;           //员工等级
     int accumPay;        //员工工资
