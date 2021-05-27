@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 using namespace std;
 
 class Date
@@ -33,7 +34,8 @@ istream &operator>>(istream &input, Date &d)
 
 ostream &operator<<(ostream &output, Date &d)
 {
-    output << d.year << "." << d.month << "." << d.day;
+    output << setiosflags(ios::right) << setw(4) << d.year << "." << setw(2) << d.month 
+    << "." << setw(2) << d.day << resetiosflags(ios::right);
     return output;
 }
 
@@ -44,7 +46,7 @@ protected:
     char number[7];
     char sex[3];
     Date birthday;
-    char id[18];
+    char id[19];
 
 public:
     People();
